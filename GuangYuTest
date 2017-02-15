@@ -1,0 +1,36 @@
+	class MainClass
+	{
+		public static int maxLength(string str){  
+			if(str==null||str.Equals("")){  
+				return 0;  
+			}  
+			List<string> set=new List<string>();  
+			int maxLength=0;  
+			int pre=0;  
+			int after=0;  
+			while(after<str.Length){  
+				if(!set.Contains(str[after].ToString())){  
+					set.Add(str[after].ToString());  
+					after++;  
+				}else{  
+					set.Clear();   
+					if((after-pre)>maxLength){  
+						maxLength=after-pre;  
+					}  
+					pre++;  
+					after=pre;  
+				}  
+			}  
+
+			if((after-pre)>maxLength){  
+				maxLength=after-pre;  
+			}  
+			return maxLength;  
+		}  
+		public static void Main (string[] args)
+		{
+			string str = "abcabcbb";
+			Console.WriteLine ( maxLength (str));
+		}
+	}
+}
